@@ -3,9 +3,11 @@
   <app-loading-spinner></app-loading-spinner>
 </div>
 
-<div class="alert alert-danger alert-style" *ngIf="error">
+<!-- <div class="alert alert-danger alert-style" *ngIf="error">
   <p>{{error}}</p>
-</div>
+</div> -->
+
+<app-alert [message]="error" *ngIf="error" (close)="OnHandleError()"></app-alert>
 
 <div class="back" *ngIf="!isLoading">
   <div class="div-center body-shadow">
