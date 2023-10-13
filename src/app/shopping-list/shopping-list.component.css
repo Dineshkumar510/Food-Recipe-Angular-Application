@@ -1,0 +1,10 @@
+.list-group-item{
+  cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.cancel-icon{
+
+}

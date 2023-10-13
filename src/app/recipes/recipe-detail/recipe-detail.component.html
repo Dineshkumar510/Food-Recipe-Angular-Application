@@ -1,0 +1,58 @@
+<div class="card" style="margin: 5rem 0">
+    <div class="card-body body-shadow">
+
+      <div class="row">
+        <div class="col-xs-12" style="display: flex; justify-content: center;">
+          <img
+            [src]="recipe.imagePath"
+            alt="{{ recipe.name }}"
+            class="img-responsive"
+            style="max-height: 250px; border: 1px solid #e1e1e1; padding: 8px;">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <h2>{{ recipe.name }}</h2>
+        </div>
+
+        <div class="col-xs-6" style="display: flex; justify-content: end; margin-top: 2rem;">
+          <div class="btn-group" appDropdown>
+            <button
+              type="button"
+              class="btn btn-primary dropdown-toggle">
+              Manage Recipe <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a (click)="onAddToShoppingList()" style="cursor: pointer;">To Shopping List</a></li>
+              <li><a style="cursor: pointer;" (click)="onEditRecipe()">Edit Recipe</a></li>
+              <li><a style="cursor: pointer;" (click)="onDeleteRecipe()">Delete Recipe</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12" style="border: 1px solid #e1e1e1; border-radius: 50px; margin: 2rem 0px;">
+            <p style="margin: 1rem;">
+              {{ recipe.description }}
+            </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12" style="display: flex;
+        justify-content: center;">
+          <ul class="list-group">
+            <li
+              class="list-group-item"
+              *ngFor="let ingredient of recipe.ingredients">
+              {{ ingredient.name }} - {{ ingredient.amount }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+</div>

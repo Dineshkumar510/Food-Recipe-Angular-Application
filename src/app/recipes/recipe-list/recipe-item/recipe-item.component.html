@@ -1,0 +1,24 @@
+<!-- <a
+  style="cursor: pointer;"
+  [routerLink]="[index]"
+  routerLinkActive="active"
+  class="list-group-item clearfix">
+      <div class="pull-left">
+        <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
+        <p class="list-group-item-text">{{ recipe.description }}</p>
+      </div>
+      <span class="pull-right">
+        <img class="img-responsive" [src]="recipe.imagePath" alt="{{ recipe.name }}" style="max-height: 50px;">
+      </span>
+</a> -->
+
+
+<div class="card card-style">
+  <img class="card-img-top" [src]="recipe.imagePath" alt="{{ recipe.name }}" style="max-height: 12rem;">
+  <div class="card-body" style="padding: 2rem;">
+    <h5 class="card-title card-main-title">{{ recipe.name }}</h5>
+    <p class="card-text">{{ recipe.description }}</p>
+    <a class="list-group-item clearfix" [routerLink]="[index]" routerLinkActive="active"
+    style="cursor: pointer; width: fit-content;">View Details</a>
+  </div>
+</div>

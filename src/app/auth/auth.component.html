@@ -1,0 +1,45 @@
+
+<div *ngIf="isLoading">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+
+<div class="alert alert-danger alert-style" *ngIf="error">
+  <p>{{error}}</p>
+</div>
+
+<div class="back" *ngIf="!isLoading">
+  <div class="div-center body-shadow">
+    <div class="content">
+      <h3>{{isLogin ? 'SignUp' : 'Login'}}</h3>
+      <hr/>
+      <form #authForm="ngForm" (ngSubmit)="OnSubmit(authForm)">
+
+        <div class="form-group">
+          <label for="Email1">Email address</label>
+          <input type="email" class="form-control" id="Email1" placeholder="Email" ngModel name="email" required email
+          #emailContent>
+        </div>
+
+        <div class="form-group">
+          <label for="Password1">Password</label>
+          <input type="password" class="form-control" id="Password1" placeholder="Password" ngModel name="password" required
+          minlength="6">
+        </div>
+
+        <div class="form-group" *ngIf="isLogin">
+          <label for="Password2">Confirm Password</label>
+          <input type="password" class="form-control" id="Password2" placeholder="Confirm Password" ngModel
+          name="ConfirmPassword" required minlength="6">
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!authForm.valid"
+        >{{isLogin ? 'Confirm' : 'Login'}}</button>
+
+        <hr />
+        <button type="button" class="btn btn-link" (click)="switchMode()">{{isLogin ? 'Switch to Login' : 'SignUp'}}</button>
+
+        <button type="button" class="btn btn-link" *ngIf="!isLogin">Reset Password</button>
+      </form>
+
+    </div>
+  </div>

@@ -1,0 +1,87 @@
+
+  <div class="card" style="margin-bottom: 5rem;">
+      <div class="card-body body-shadow">
+        <div class="row">
+          <div class="col-md-12">
+              <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" formControlName="name">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                          <label for="imagePath">Image Url</label>
+                          <input type="text" id="imagePath" class="form-control" formControlName="imagePath" #imagePath>
+                      </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 flex-center">
+                        <img [src]="imagePath.value" class="img-responsive img-preview"
+                        [ngStyle]="{'display' : !imagePath.value ? 'none' : '', 'border' : !imagePath.value ? '1px solid #e1e1e1' : ''}">
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label for="description">Description</label>
+                          <textarea type="text" id="description" class="form-control" formControlName="description"
+                          rows="4"></textarea>
+                      </div>
+                  </div>
+                </div>
+
+                <hr>
+
+                <div class="row float-right" style="margin-bottom: 10px">
+                  <div class="col-md-12" style="display: flex; justify-content: start; margin-bottom: 1rem;">
+                      <div class="button">
+                          <button class="btn btn-success" type="button" (click)="onAddIngredient()">
+                            <i class="fa fa-plus"></i>&nbsp;&nbsp;Add Ingredient
+                          </button>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12" formArrayName="ingredients" style="max-height: 130px; overflow: auto;">
+                        <div class="row" style="margin-bottom: 10px;"
+                          *ngFor="let ingredientCtrl of controls; let i = index"
+                          [formGroupName]="i">
+                          <div class="col-md-4">
+                            <input type="text"  class="form-control" formControlName="name">
+                          </div>
+                          <div class="col-md-2">
+                            <input type="number"  class="form-control" formControlName="amount">
+                          </div>
+                          <div class="col-md-2">
+                            <button type="button" class="btn btn-danger" (click)="deleteIngredient(i)">
+                              <i class="fa fa-trash"></i>
+                            </button>
+                          </div>
+                        </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12" style="display:flex; justify-content:end; margin: 2rem 0;">
+                    <button type="submit" class="btn btn-success"
+                    style="margin-right: 10px;" [disabled]="!recipeForm.valid">
+                    <i *ngIf="editMode == false" class="fa fa-check"></i>&nbsp;{{editMode ? 'Update' : 'Save'}}
+                  </button>
+                    <button type="button" class="btn btn-danger" [disabled]="!recipeForm.valid"
+                    (click)="onCancel()">Cancel</button>
+                  </div>
+                </div>
+
+              </form>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
