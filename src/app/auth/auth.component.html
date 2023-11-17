@@ -1,3 +1,4 @@
+<ng-template appPlaceholder></ng-template>
 
 <div *ngIf="isLoading">
   <app-loading-spinner></app-loading-spinner>
@@ -7,7 +8,7 @@
   <p>{{error}}</p>
 </div> -->
 
-<app-alert [message]="error" *ngIf="error" (close)="OnHandleError()"></app-alert>
+<!-- <app-alert [message]="error" *ngIf="error" (close)="OnHandleError()"></app-alert> -->
 
 <div class="back" *ngIf="!isLoading">
   <div class="div-center body-shadow">

@@ -55,6 +55,7 @@ export class AuthService {
     ).pipe(catchError(this.handleError),
     tap(resData => {
       this.handleAuthenication(resData.email, resData.localId, resData.idToken, +resData.expiresIn)
+      console.log(resData.email, resData.localId, resData.idToken, +resData.expiresIn)
     })
   );
 }
@@ -105,7 +106,7 @@ export class AuthService {
         this.user.next(user);
         this.autoLogOut(expiresIn * 1000);
         localStorage.setItem('UserData', JSON.stringify(user));
-
+        console.log(email, userId, token, exiprationDate)
   }
 
 
